@@ -3,11 +3,11 @@ template = "BEGIN:VCARD\nVERSION:4.0\N:;{};;;\nFN:Botted by mxxx.\nTEL;TYPE#work
 with open('goods2.txt', 'r', encoding='utf-8') as f:
     rows = f.read().split('\n')
     f.close()
-with open('contactssssssы.txt', 'a+', encoding='utf-8') as f:
+with open('contacts.txt', 'a+', encoding='utf-8') as f:
     for ind, row in enumerate(rows):
         phone, name = row.split(':')
         name = f"{name} {ind + 1}"
-        
+        phone = "+{}-{}-{}-{}".format(phone[0], phone[1:4], phone[4:7], phone[7:11])
 
         # temp trash
         # string = phone
@@ -17,8 +17,8 @@ with open('contactssssssы.txt', 'a+', encoding='utf-8') as f:
         # phone = string
         # phone = "{}-{}-{}".format(phone[0:3], phone[3:6], phone[6:11])
 
-        
-        complete = template.format(name, name, phone)
+
+        complete = template.format(name, phone)
         f.write(complete)
         print(f"{ind+1}/{len(rows)}")
     f.close()
